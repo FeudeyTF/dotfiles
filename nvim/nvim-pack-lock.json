@@ -1,0 +1,82 @@
+{
+  "plugins": {
+    "blink.cmp": {
+      "rev": "ee7cfac8e1d0bf9b90a27d7a9823c13389bead08",
+      "src": "https://github.com/Saghen/blink.cmp"
+    },
+    "copilot.vim": {
+      "rev": "f89e977c87180519ba3b942200e3d05b17b1e2fc",
+      "src": "https://github.com/github/copilot.vim"
+    },
+    "cord.nvim": {
+      "rev": "1af0ff6826b10f9ae8b01c63d16a90b8b31e7c48",
+      "src": "https://github.com/vyfor/cord.nvim"
+    },
+    "dashboard-nvim": {
+      "rev": "0775e567b6c0be96d01a61795f7b64c1758262f6",
+      "src": "https://github.com/nvimdev/dashboard-nvim"
+    },
+    "friendly-snippets": {
+      "rev": "572f5660cf05f8cd8834e096d7b4c921ba18e175",
+      "src": "https://github.com/rafamadriz/friendly-snippets"
+    },
+    "markview.nvim": {
+      "rev": "0a5033326f703d99a8788e2d47753d6298195e8a",
+      "src": "https://github.com/OXY2DEV/markview.nvim"
+    },
+    "mason.nvim": {
+      "rev": "57e5a8addb8c71fb063ee4acda466c7cf6ad2800",
+      "src": "https://github.com/mason-org/mason.nvim"
+    },
+    "neo-tree.nvim": {
+      "rev": "7a6f14c6edde0921333005cd738309b70138964b",
+      "src": "https://github.com/nvim-neo-tree/neo-tree.nvim",
+      "version": "3.0.0 - 4.0.0"
+    },
+    "nui.nvim": {
+      "rev": "de740991c12411b663994b2860f1a4fd0937c130",
+      "src": "https://github.com/MunifTanjim/nui.nvim"
+    },
+    "nvim": {
+      "rev": "193e123cdbc4dd3e86db883d55349e9587f0ded6",
+      "src": "https://github.com/catppuccin/nvim"
+    },
+    "nvim-dbee": {
+      "rev": "dda517694889a5d238d7aa407403984da9f80cc0",
+      "src": "https://github.com/kndndrj/nvim-dbee"
+    },
+    "nvim-lspconfig": {
+      "rev": "a2bd1cf7b0446a7414aaf373cea5e4ca804c9c69",
+      "src": "https://github.com/neovim/nvim-lspconfig"
+    },
+    "nvim-treesitter": {
+      "rev": "42fc28ba918343ebfd5565147a42a26580579482",
+      "src": "https://github.com/nvim-treesitter/nvim-treesitter"
+    },
+    "nvim-web-devicons": {
+      "rev": "8dcb311b0c92d460fac00eac706abd43d94d68af",
+      "src": "https://github.com/nvim-tree/nvim-web-devicons"
+    },
+    "plenary.nvim": {
+      "rev": "b9fd5226c2f76c951fc8ed5923d85e4de065e509",
+      "src": "https://github.com/nvim-lua/plenary.nvim"
+    },
+    "telescope.nvim": {
+      "rev": "e69b434b968a33815e2f02a5c7bd7b8dd4c7d4b2",
+      "src": "https://github.com/nvim-telescope/telescope.nvim",
+      "version": "'v0.2.0'"
+    },
+    "vague.nvim": {
+      "rev": "dba28050887c2810b5ebf9e0143b4e919bd55757",
+      "src": "https://github.com/vague2k/vague.nvim"
+    },
+    "vim-dreammaker": {
+      "rev": "0c913308e7e53174f61d460b3100488574421e95",
+      "src": "https://github.com/ccraciun/vim-dreammaker.git"
+    },
+    "vscode.nvim": {
+      "rev": "aa1102a7e15195c9cca22730b09224a7f7745ba8",
+      "src": "https://github.com/Mofiqul/vscode.nvim"
+    }
+  }
+}
