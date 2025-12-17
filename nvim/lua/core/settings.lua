@@ -6,4 +6,3 @@ vim.o.swapfile = false
 vim.o.wrap = true
 vim.o.signcolumn = "yes"
 vim.o.winborder = "rounded"
-

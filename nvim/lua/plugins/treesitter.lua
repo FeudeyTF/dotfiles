@@ -3,11 +3,11 @@ vim.pack.add({
 })
 
 require('nvim-treesitter.configs').setup {
-  ensure_installed = { "typescript", "lua", "go", "tsx", "c_sharp", "vimdoc", "vim", "javascript" },
+	ensure_installed = { "typescript", "lua", "go", "tsx", "c_sharp", "vimdoc", "vim", "javascript" },
 
-  sync_install = false,
-  auto_install = true,
-  highlight = {
-    enable = true,
-  },
+	sync_install = false,
+	auto_install = true,
+	highlight = {
+		enable = true,
+	},
 }
