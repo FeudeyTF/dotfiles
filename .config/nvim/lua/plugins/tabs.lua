@@ -15,5 +15,5 @@ require("lualine").setup({})
 -- Tabs
 vim.keymap.set('n', '<leader>to', ':tabnew<CR>')   -- open new tab
 vim.keymap.set('n', '<leader>tx', ':tabcloseCR>') -- close current tab
-vim.keymap.set('n', '<leader>tn', ':BufferLineMoveNext<CR>')     -- go to next tab
-vim.keymap.set('n', '<leader>tp', ':BufferLineMovePrev<CR>')     -- go to previous tabt
+vim.keymap.set('n', '<leader>tn', ':BufferLineCycleNext<CR>')     -- go to next tab
+vim.keymap.set('n', '<leader>tp', ':BufferLineCyclePrev<CR>')     -- go to previous tabt
