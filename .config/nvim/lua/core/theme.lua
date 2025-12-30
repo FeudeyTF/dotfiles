@@ -6,3 +6,4 @@ vim.pack.add({
 
 vim.cmd("colorscheme vscode")
 vim.cmd("set completeopt+=noselect")
+
