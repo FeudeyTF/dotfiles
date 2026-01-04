@@ -15,14 +15,13 @@ require('nvim-treesitter.config').setup {
 	},
 }
 
-
 -- DreamMaker parser
 -- Register parser for .dm and .dme files
-vim.treesitter.language.register('dm', { 'dm', 'dme' })
+vim.treesitter.language.register('dm', { 'dm', 'dme', 'dmm' })
 
 -- Add highlighting for DreamMaker files
 vim.api.nvim_create_autocmd('FileType', {
-	pattern = { 'dm' },
+	pattern = { 'dm', 'dme', 'dmm' },
 	callback = function() vim.treesitter.start() end,
 })
 
@@ -32,11 +31,12 @@ vim.api.nvim_create_autocmd('User', {
 	callback = function()
 		require('nvim-treesitter.parsers').dm = {
 			install_info = {
-				path = '~/Projects/tree-sitter-dm',
-				location = '',
---				generate = true,
+				url = 'https://github.com/FeudeyTF/tree-sitter-dm',
+				revision = 'HEAD',
+				location = 'src',
+				generate = true,
 				generate_from_json = false,
-				queries = 'queries'
+				queries = 'queries',
 			},
 		}
 	end

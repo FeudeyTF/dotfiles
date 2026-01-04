@@ -5,7 +5,6 @@ require("core.theme")
 
 -- Plugin Setting
 require("plugins.autocomplete")
-require("plugins.copilot")
 require("plugins.dashboard")
 require("plugins.discord")
 require("plugins.lsp")
