@@ -1,17 +1,20 @@
 vim.pack.add({
 	{ src = "https://github.com/neovim/nvim-lspconfig" },
---	{ src = "https://github.com/ccraciun/vim-dreammaker.git" },
 	{ src = "https://github.com/seblyng/roslyn.nvim" }
 })
 
+-- Adding .dm, .dme and .dmm as DM language files
 vim.filetype.add({
 	extension = {
 		dm = "dm",
 		dme = "dm",
+		dmm = "dm"
 	}
 })
 
+-- LSP config for DreamMaker language server
 vim.lsp.config['dm'] = {
+	-- Command, that will start language server
 	cmd = { 'dm-langserver' },
 	filetypes = { 'dm' },
 	root_markers = { 'SpacemanDMM.toml', '.git' },
@@ -49,6 +52,8 @@ vim.lsp.config("roslyn", {
 })
 
 vim.keymap.set('n', '<leader>kf', vim.lsp.buf.format)
+
+-- Enabling LSP servers (DreamMaker too)
 vim.lsp.enable({ "lua_ls", "rosylyn", "ts_ls", "marksman", "dm", "clangd" })
 
 vim.diagnostic.config {
