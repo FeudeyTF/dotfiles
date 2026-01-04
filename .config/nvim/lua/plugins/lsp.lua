@@ -1,19 +1,19 @@
 vim.pack.add({
 	{ src = "https://github.com/neovim/nvim-lspconfig" },
-	{ src = "https://github.com/ccraciun/vim-dreammaker.git" },
+--	{ src = "https://github.com/ccraciun/vim-dreammaker.git" },
 	{ src = "https://github.com/seblyng/roslyn.nvim" }
 })
 
 vim.filetype.add({
 	extension = {
-		dm = "dreammaker",
-		dme = "dreammaker",
+		dm = "dm",
+		dme = "dm",
 	}
 })
 
-vim.lsp.config['dreammaker'] = {
+vim.lsp.config['dm'] = {
 	cmd = { 'dm-langserver' },
-	filetypes = { 'dreammaker' },
+	filetypes = { 'dm' },
 	root_markers = { 'SpacemanDMM.toml', '.git' },
 	settings = {},
 }
@@ -47,8 +47,9 @@ vim.lsp.config("roslyn", {
 		},
 	},
 })
+
 vim.keymap.set('n', '<leader>kf', vim.lsp.buf.format)
-vim.lsp.enable({ "lua_ls", "rosylyn", "ts_ls", "marksman", "dreammaker" })
+vim.lsp.enable({ "lua_ls", "rosylyn", "ts_ls", "marksman", "dm", "clangd" })
 
 vim.diagnostic.config {
 	severity_sort = true,
