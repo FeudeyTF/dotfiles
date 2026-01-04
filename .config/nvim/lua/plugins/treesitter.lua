@@ -36,7 +36,7 @@ vim.api.nvim_create_autocmd('User', {
 				location = 'src',
 				generate = true,
 				generate_from_json = false,
-				queries = 'queries',
+				queries = 'queries/neovim',
 			},
 		}
 	end
