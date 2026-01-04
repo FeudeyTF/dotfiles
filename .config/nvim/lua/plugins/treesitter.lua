@@ -32,10 +32,10 @@ vim.api.nvim_create_autocmd('User', {
 		require('nvim-treesitter.parsers').dm = {
 			install_info = {
 				url = 'https://github.com/FeudeyTF/tree-sitter-dm',
-				revision = 'HEAD',
-				location = 'src',
+				branch = 'master',
+				location = '',
 				generate = true,
-				generate_from_json = false,
+				generate_from_json = true,
 				queries = 'queries/neovim',
 			},
 		}
