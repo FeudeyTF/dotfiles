@@ -7,3 +7,4 @@ vim.keymap.set('n', '<leader>e', ':Neotree<CR>')
 vim.keymap.set('n', '<leader>g', ':Neotree float git_status<CR>')
 
 
+vim.keymap.set('n', '<leader>t', ':term<CR>')

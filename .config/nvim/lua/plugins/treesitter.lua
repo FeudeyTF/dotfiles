@@ -6,7 +6,7 @@ vim.pack.add({
 })
 
 require('nvim-treesitter.config').setup {
-	ensure_installed = { "typescript", "lua", "go", "tsx", "c_sharp", "vimdoc", "vim", "javascript" },
+	ensure_installed = { "c_sharp", "typescript", "lua", "go", "tsx", "vimdoc", "vim", "javascript" },
 
 	sync_install = false,
 	auto_install = true,
@@ -17,11 +17,11 @@ require('nvim-treesitter.config').setup {
 
 -- DreamMaker parser
 -- Register parser for .dm and .dme files
-vim.treesitter.language.register('dm', { 'dm', 'dme', 'dmm' })
+vim.treesitter.language.register('dm', { 'dm', 'dme' })
 
 -- Add highlighting for DreamMaker files
 vim.api.nvim_create_autocmd('FileType', {
-	pattern = { 'dm', 'dme', 'dmm' },
+	pattern = { 'dm', 'dme' },
 	callback = function() vim.treesitter.start() end,
 })
 
@@ -33,6 +33,7 @@ vim.api.nvim_create_autocmd('User', {
 			install_info = {
 				url = 'https://github.com/FeudeyTF/tree-sitter-dm',
 				branch = 'master',
+				--path = '~/Projects/tree-sitter-dm',
 				location = '',
 				generate = true,
 				generate_from_json = true,
