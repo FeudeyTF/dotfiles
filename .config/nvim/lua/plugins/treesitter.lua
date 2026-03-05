@@ -31,9 +31,9 @@ vim.api.nvim_create_autocmd('User', {
 	callback = function()
 		require('nvim-treesitter.parsers').dm = {
 			install_info = {
-				url = 'https://github.com/FeudeyTF/tree-sitter-dm',
-				branch = 'master',
-				--path = '~/Projects/tree-sitter-dm',
+				--url = 'https://github.com/FeudeyTF/tree-sitter-dm',
+				--branch = 'master',
+				path = '~/Projects/tree-sitter-dm',
 				location = '',
 				generate = true,
 				generate_from_json = true,

@@ -5,5 +5,5 @@ vim.pack.add({
 	{ src = "https://github.com/tiagovla/tokyodark.nvim" }
 })
 
-vim.cmd("colorscheme vim")
+vim.cmd("colorscheme catppuccin-mocha")
 vim.cmd("set completeopt+=noselect")
