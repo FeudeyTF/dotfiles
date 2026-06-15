@@ -9,6 +9,7 @@
 {
   imports = [
     ./hardware-configuration.nix
+    inputs.home-manager.nixosModules.home-manager
   ];
 
   boot.loader = {
@@ -26,6 +27,16 @@
     canTouchEfiVariables = true;
     efiSysMountPoint = "/boot/efi";
   };
+
+  home-manager = {
+    extraSpecialArgs = { inherit inputs; };
+    users = {
+      feudey = import ./home.nix;
+    };
+  };
+
+  home-manager.useUserPackages = true;
+  home-manager.useGlobalPkgs = true;
 
   documentation.man.enable = false;
 
@@ -59,28 +70,38 @@
     };
   };
 
-  fonts.packages = with pkgs; [
+  fonts = { 
+   packages = with pkgs; [
     nerd-fonts.symbols-only
     nerd-fonts.commit-mono
     font-awesome
+	corefonts
   ];
+  enableDefaultPackages = true;
+  };
+
+  users.users.hackerman = {
+    isNormalUser = true;
+    extraGroups = [
+      "wheel"
+      "networkmanager"
+    ];
+
+    packages = with pkgs; [
+      nmap
+      nuclei
+      nuclei-templates
+      wpscan
+      metasploit
+    ];
+  };
 
   users.users.feudey = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ];
-    packages = with pkgs; [
-      fastfetch
-      kitty
-      mc
-      gtk3
-      telegram-desktop
-      waybar
-      hyprpaper
-      hyprshot
-      onlyoffice-desktopeditors
-      inputs.zen-browser.packages."x86_64-linux".default
-      fsel
-      nil
+    extraGroups = [
+      "wheel"
+      "networkmanager"
+	  "wireshark"
     ];
   };
 
@@ -93,14 +114,12 @@
   environment.systemPackages = with pkgs; [
     wget
     neovim
-    git
     btop
-    nvtopPackages.amd
-    nvtopPackages.nvidia
     nvitop
+    nixfmt
   ];
 
-  programs.amnezia-vpn = {
+   programs.amnezia-vpn = {
     enable = true;
   };
 
@@ -116,35 +135,46 @@
     };
   };
 
-  programs.hyprland.enable = true;
+  programs.wireshark.enable = true;
   programs.dconf.enable = true;
-
-  hardware.graphics = {
+  programs.hyprland.enable = true;
+  programs.git = {
     enable = true;
-  };
-
-  services.xserver.videoDrivers = [
-    "nvidia"
-  ];
-
-  hardware.nvidia = {
-    modesetting.enable = true;
-    powerManagement.enable = false;
-    powerManagement.finegrained = false;
-    open = false;
-    nvidiaSettings = true;
-
-    package = config.boot.kernelPackages.nvidiaPackages.legacy_580;
-
-    prime = {
-      offload = {
-        enable = true;
-        enableOffloadCmd = true;
+    config = {
+      safe = {
+        directory = "/etc/nixos";
       };
-      nvidiaBusId = "PCI:1:0:0";
-      amdgpuBusId = "PCI:5:0:0";
     };
   };
+
+  /*
+    hardware.graphics = {
+      enable = true;
+    };
+
+    services.xserver.videoDrivers = [
+      "nvidia"
+    ];
+
+    hardware.nvidia = {
+      modesetting.enable = true;
+      powerManagement.enable = false;
+      powerManagement.finegrained = false;
+      open = false;
+      nvidiaSettings = true;
+
+      package = config.boot.kernelPackages.nvidiaPackages.legacy_580;
+
+      prime = {
+        offload = {
+          enable = true;
+          enableOffloadCmd = true;
+        };
+        nvidiaBusId = "PCI:1:0:0";
+        amdgpuBusId = "PCI:5:0:0";
+      };
+    };
+  */
 
   system.stateVersion = "26.05";
 }
