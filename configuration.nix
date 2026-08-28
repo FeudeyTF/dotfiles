@@ -9,6 +9,7 @@
 {
   imports = [
     ./hardware-configuration.nix
+    ./zapret.nix
     inputs.home-manager.nixosModules.home-manager
   ];
 
@@ -22,6 +23,8 @@
       theme = pkgs.catppuccin-grub;
     };
   };
+
+  # boot.kernelParams = [ "module_blacklist=amdgpu" ];
 
   boot.loader.efi = {
     canTouchEfiVariables = true;
@@ -45,11 +48,28 @@
     "flakes"
   ];
 
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_6_18;
 
   networking.hostName = "Feudey";
 
   networking.networkmanager.enable = true;
+
+  my.zapret = {
+    enable = true;
+    zapret-discord-youtube = {
+      version = "1.10.2";
+      hash = "sha256-aFZT4E94fskU//J/xaGniV4NKOQ4eL75DXjGH8pHlMI=";
+      batFileName = "general (EXP).bat";
+
+     /* extraListExclude = [
+        "byond.com"
+        "play.monkestation.com"
+        "monkestation.com"
+        "rr18---sn-n8v7znse.googlevideo.com"
+        "rr2---sn-hxb54vo-238s.googlevideo.com"
+      ];*/
+    };
+  };
 
   time.timeZone = "Europe/Moscow";
 
@@ -70,14 +90,19 @@
     };
   };
 
-  fonts = { 
-   packages = with pkgs; [
-    nerd-fonts.symbols-only
-    nerd-fonts.commit-mono
-    font-awesome
-	corefonts
-  ];
-  enableDefaultPackages = true;
+  fonts = {
+    fontDir.enable = true;
+
+    packages = with pkgs; [
+      nerd-fonts.symbols-only
+      nerd-fonts.commit-mono
+      font-awesome
+      corefonts
+      liberation_ttf
+      noto-fonts
+      noto-fonts-cjk-sans
+    ];
+    enableDefaultPackages = true;
   };
 
   users.users.hackerman = {
@@ -96,12 +121,14 @@
     ];
   };
 
+  programs.nix-ld.enable = true;
+
   users.users.feudey = {
     isNormalUser = true;
     extraGroups = [
       "wheel"
       "networkmanager"
-	  "wireshark"
+      "wireshark"
     ];
   };
 
@@ -109,6 +136,13 @@
 
   environment.variables = rec {
     GSETTINGS_SCHEMA_DIR = "${pkgs.gtk3}/share/gsettings-schemas/${pkgs.gtk3.name}/glib-2.0/schemas";
+    DXVK_FILTER_DEVICE_NAME = "NVIDIA GeForce GTX 1050";
+    BYOND_NO_SANDBOX = 1;
+    BYOND_CACHE = "/home/feudey/.local/share/byond-flake/prefix/drive_c/users/feudey/Documents/BYOND/cache";
+    # __NV_PRIME_RENDER_OFFLOAD = 1;
+    # __NV_PRIME_RENDER_OFFLOAD_PROVIDER = "NVIDIA-G0";
+    # __GLX_VENDOR_LIBRARY_NAME = "nvidia";
+    # __VK_LAYER_NV_optimus = "NVIDIA_only";
   };
 
   environment.systemPackages = with pkgs; [
@@ -118,8 +152,7 @@
     nvitop
     nixfmt
   ];
-
-   programs.amnezia-vpn = {
+  programs.amnezia-vpn = {
     enable = true;
   };
 
@@ -147,34 +180,51 @@
     };
   };
 
-  /*
-    hardware.graphics = {
-      enable = true;
-    };
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true;
+    dedicatedServer.openFirewall = true;
+  };
 
-    services.xserver.videoDrivers = [
-      "nvidia"
-    ];
+  programs.gamemode.enable = true;
 
-    hardware.nvidia = {
-      modesetting.enable = true;
-      powerManagement.enable = false;
-      powerManagement.finegrained = false;
-      open = false;
-      nvidiaSettings = true;
+  services.xserver.xkb = {
+    layout = "us,ru";
+    options = "grp:rctrl_toggle";
+  };
 
-      package = config.boot.kernelPackages.nvidiaPackages.legacy_580;
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true;
+  };
 
-      prime = {
-        offload = {
-          enable = true;
-          enableOffloadCmd = true;
-        };
-        nvidiaBusId = "PCI:1:0:0";
-        amdgpuBusId = "PCI:5:0:0";
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
+  };
+
+  services.xserver.videoDrivers = [
+    "nvidia"
+  ];
+
+  hardware.nvidia = {
+    modesetting.enable = true;
+    powerManagement.enable = true;
+    powerManagement.finegrained = false;
+    open = false;
+    nvidiaSettings = true;
+
+    package = config.boot.kernelPackages.nvidiaPackages.legacy_580;
+
+    prime = {
+      offload = {
+        enable = true;
+        enableOffloadCmd = true;
       };
+      nvidiaBusId = "PCI:1:0:0";
+      amdgpuBusId = "PCI:5:0:0";
     };
-  */
+  };
 
   system.stateVersion = "26.05";
 }

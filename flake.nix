@@ -4,9 +4,14 @@
   inputs = {
 
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-26.05";
-
     home-manager = {
       url = "github:nix-community/home-manager/release-26.05";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    byond-sdk = {
+      url = "github:FeudeyTF/byond-sdk-flake";
+      #url = "path:/home/feudey/Projects/byond-sdk-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -23,6 +28,7 @@
       nixpkgs,
       home-manager,
       zen-browser,
+      byond-sdk,
       ...
     }@inputs:
     {
