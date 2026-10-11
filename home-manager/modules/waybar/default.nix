@@ -401,7 +401,6 @@
           all-outputs = true;
         };
 
-        # Уже присутствующие у тебя модули
         "pulseaudio" = {
           format = "{icon}";
           format-muted = "";
