@@ -5,7 +5,10 @@
     ./modules/cursor.nix
     ./modules/direnv.nix
     ./modules/github.nix
-    ./modules/wm/hyprland.nix
+	./modules/kitty.nix
+	./modules/starship.nix
+    ./modules/hyprland
+	./modules/waybar
     ../modules/nixvim
   ];
 
@@ -17,11 +20,9 @@
 
   home.packages = with pkgs; [
     fastfetch
-    kitty
     mc
     gtk3
     telegram-desktop
-    waybar
     hyprpaper
     hyprshot
     onlyoffice-desktopeditors
@@ -47,7 +48,7 @@
     };
 
     extraConfig = {
-      init.defaultBranch = "master";
+      init.defaultBranch = "main";
 
       pull.rebase = false;
       push.autoSetupRemote = true;
