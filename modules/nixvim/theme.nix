@@ -1,5 +1,5 @@
 {
-  colorschemes.gruvbox = {
+  colorschemes.rose-pine = {
     enable = true;
     settings = {
       contrast = "hard";

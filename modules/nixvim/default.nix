@@ -10,6 +10,7 @@
 	  ./plugins/cmp.nix
 	  ./plugins/cord.nix
 	  ./plugins/dashboard.nix
+	  ./plugins/lualine.nix
 	  ./plugins/lsp.nix
 	  ./plugins/misc.nix
 	  ./plugins/telescope.nix

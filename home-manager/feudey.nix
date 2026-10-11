@@ -23,12 +23,8 @@
     mc
     gtk3
     telegram-desktop
-    hyprpaper
-    hyprshot
     onlyoffice-desktopeditors
     inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
-    inputs.byond-sdk.packages.${pkgs.stdenv.hostPlatform.system}.DreamDaemon
-    inputs.byond-sdk.packages.${pkgs.stdenv.hostPlatform.system}.DreamMaker
     termshark
     corefonts
     unzip
