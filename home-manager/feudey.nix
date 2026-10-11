@@ -4,7 +4,8 @@
     ./bash.nix
     ./modules/cursor.nix
     ./modules/direnv.nix
-	./modules/wm/hyprland.nix
+    ./modules/github.nix
+    ./modules/wm/hyprland.nix
     ../modules/nixvim
   ];
 
@@ -30,7 +31,6 @@
     termshark
     corefonts
     unzip
-    github-cli
     bluetui
     discord
     docker-compose
@@ -45,7 +45,29 @@
       name = "FeudeyTF";
       email = "yanmordanenko089@gmail.com";
     };
+
+    extraConfig = {
+      init.defaultBranch = "master";
+
+      pull.rebase = false;
+      push.autoSetupRemote = true;
+
+      url."git@github.com:".insteadOf = "https://github.com/";
+    };
   };
+
+  programs.ssh = {
+    enable = true;
+
+    matchBlocks."github.com" = {
+      hostname = "github.com";
+      user = "git";
+      identityFile = "~/.ssh/id_ed25519";
+      identitiesOnly = true;
+    };
+  };
+
+  services.ssh-agent.enable = true;
 
   programs.home-manager.enable = true;
 }
