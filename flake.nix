@@ -1,17 +1,16 @@
 {
-  description = "A very basic flake";
+  description = "FeudeyTF's NixOS configuration";
 
   inputs = {
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-26.05";
     home-manager = {
-      url = "github:nix-community/home-manager/release-26.05";
+      url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     byond-sdk = {
       url = "github:FeudeyTF/byond-sdk-flake";
-      #url = "path:/home/feudey/Projects/byond-sdk-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -21,6 +20,10 @@
         nixpkgs.follows = "nixpkgs";
       };
     };
+
+    nixvim = {
+      url = "github:nix-community/nixvim/main";
+    };
   };
 
   outputs =
@@ -29,6 +32,7 @@
       home-manager,
       zen-browser,
       byond-sdk,
+      nixvim,
       ...
     }@inputs:
     {
@@ -38,7 +42,7 @@
         specialArgs = { inherit inputs; };
 
         modules = [
-          ./configuration.nix
+          ./nixos/configuration.nix
         ];
       };
     };
