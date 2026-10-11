@@ -1,4 +1,7 @@
-{ lib, ... }:
+{
+  lib,
+  ...
+}:
 
 let
   inherit (lib) concatMap range;
@@ -136,6 +139,11 @@ let
 
 in
 {
+  imports = [
+    ./hyprpaper.nix
+	./hyprshot.nix
+  ];
+
   wayland.windowManager.hyprland = {
     enable = true;
     configType = "lua";
