@@ -141,7 +141,7 @@ in
 {
   imports = [
     ./hyprpaper.nix
-	./hyprshot.nix
+    ./hyprshot.nix
   ];
 
   wayland.windowManager.hyprland = {
@@ -535,20 +535,6 @@ in
         (bind (modShift "F") (exec "zen-beta --private-window"))
         (bind (mod "R") (exec menu))
 
-        # CLI
-        (bind (modShift "B") (exec "${terminal} -e $scripts/bluetooth"))
-
-        (bind (mod "N") (exec "${terminal} -e $scripts/network"))
-
-        (bind (mod "O") (exec "${terminal} -e $scripts/power"))
-
-        (bind (mod "U") (exec "${terminal} -e $scripts/update"))
-
-        # Turn services off
-        (bind (modAlt "B") (exec "$scripts/bluetooth off"))
-
-        (bind (modAlt "N") (exec "$scripts/network off"))
-
         # Screenshots
         (bind (mod "PRINT") (exec "hyprshot -m window"))
 
@@ -813,75 +799,6 @@ in
           size = "595 405";
         }
 
-        # Nautilus
-        {
-          name = "nautilus-default";
-
-          match = {
-            class = "org.gnome.Nautilus";
-          };
-
-          float = true;
-          center = true;
-          size = "980 640";
-        }
-
-        {
-          name = "nautilus-error";
-
-          match = {
-            class = "org.gnome.Nautilus";
-            title = "Oops! Something went wrong.";
-          };
-
-          float = true;
-          center = true;
-          border_size = 0;
-          size = "375 200";
-        }
-
-        {
-          name = "nautilus-generic-error";
-
-          match = {
-            class = "org.gnome.Nautilus";
-            title = "There was an error(.*)";
-          };
-
-          float = true;
-          center = true;
-          border_size = 0;
-          size = "510 215";
-        }
-
-        {
-          name = "nautilus-unable-to-access";
-
-          match = {
-            class = "org.gnome.Nautilus";
-            title = "Unable to access(.*)";
-          };
-
-          float = true;
-          center = true;
-          border_size = 0;
-          size = "300 180";
-        }
-
-        {
-          name = "nautilus-empty-title";
-
-          match = {
-            class = "org.gnome.Nautilus";
-            title = "";
-          };
-
-          float = true;
-          center = true;
-          border_size = 0;
-          size = "330 180";
-        }
-
         # qView
         {
           name = "qview-default";
@@ -919,6 +836,19 @@ in
           float = true;
           center = true;
           size = "1275 770";
+        }
+
+		 # fsel
+        {
+          name = "fsel";
+
+          match = {
+            title = "fsel";
+          };
+
+          float = true;
+          center = true;
+          size = "595 405";
         }
 
         # OBS Studio
@@ -1059,12 +989,13 @@ in
         }
 
         {
-          name = "rofi-alpha";
+          name = "fsel";
 
           match = {
-            namespace = "rofi";
+            title = "fsel";
           };
 
+     
           ignore_alpha = 0;
         }
 
