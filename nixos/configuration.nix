@@ -23,6 +23,9 @@
 
   nix = {
     settings = {
+      warn-dirty = false;
+	  show-trace = false;
+
       experimental-features = [
         "nix-command"
         "flakes"
@@ -33,8 +36,8 @@
 
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
-    
-	useGlobalPkgs = true;
+
+    useGlobalPkgs = true;
     useUserPackages = true;
 
     users = {
