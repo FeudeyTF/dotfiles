@@ -7,10 +7,14 @@
         enable = true;
 
         settings = {
-          nil = {
-            formatting = {
-              command = [ "nixfmt" ];
+          nix = {
+            flake = {
+              autoArchive = true;
             };
+          };
+
+          formatting = {
+            command = [ "nixfmt" ];
           };
         };
       };
