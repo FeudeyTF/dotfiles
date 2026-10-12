@@ -9,6 +9,7 @@
     ./modules/starship.nix
     ./modules/hyprland
     ./modules/waybar
+    ./modules/mpv.nix
     ../modules/nixvim
   ];
 
@@ -34,6 +35,7 @@
     ncmpcpp
     fsel
     simple-scan
+    qview
   ];
 
   programs.git = {
