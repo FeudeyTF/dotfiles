@@ -5,10 +5,10 @@
     ./modules/cursor.nix
     ./modules/direnv.nix
     ./modules/github.nix
-	./modules/kitty.nix
-	./modules/starship.nix
+    ./modules/kitty.nix
+    ./modules/starship.nix
     ./modules/hyprland
-	./modules/waybar
+    ./modules/waybar
     ../modules/nixvim
   ];
 
@@ -17,7 +17,6 @@
     homeDirectory = "/home/feudey";
     stateVersion = "26.05";
   };
-
 
   home.packages = with pkgs; [
     fastfetch
@@ -39,13 +38,13 @@
 
   programs.git = {
     enable = true;
-    settings.user = {
-      name = "FeudeyTF";
-      email = "yanmordanenko089@gmail.com";
-    };
+    settings = {
+      user = {
+        name = "FeudeyTF";
+        email = "yanmordanenko089@gmail.com";
+      };
 
-    extraConfig = {
-      init.defaultBranch = "main";
+      init.defaultBranch = "master";
 
       pull.rebase = false;
       push.autoSetupRemote = true;
@@ -57,11 +56,15 @@
   programs.ssh = {
     enable = true;
 
-    matchBlocks."github.com" = {
-      hostname = "github.com";
-      user = "git";
-      identityFile = "~/.ssh/id_ed25519";
-      identitiesOnly = true;
+    enableDefaultConfig = false;
+
+    settings = {
+      "github.com" = {
+        hostname = "github.com";
+        user = "git";
+        identityFile = "~/.ssh/id_ed25519";
+        identitiesOnly = true;
+      };
     };
   };
 
