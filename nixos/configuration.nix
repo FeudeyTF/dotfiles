@@ -24,7 +24,7 @@
   nix = {
     settings = {
       warn-dirty = false;
-	  show-trace = false;
+      show-trace = false;
 
       experimental-features = [
         "nix-command"
@@ -119,6 +119,10 @@
       "docker"
     ];
   };
+
+  security.sudo.extraConfig = ''
+    Defaults pwfeedback
+  '';
 
   system.stateVersion = "26.05";
 }
