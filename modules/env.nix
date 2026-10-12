@@ -1,5 +1,5 @@
 { pkgs, ... }: {
-  environment.variables = rec {
+  environment.variables = {
     GSETTINGS_SCHEMA_DIR = "${pkgs.gtk3}/share/gsettings-schemas/${pkgs.gtk3.name}/glib-2.0/schemas";
     DXVK_FILTER_DEVICE_NAME = "NVIDIA GeForce GTX 1050";
     BYOND_NO_SANDBOX = 1;
@@ -9,6 +9,11 @@
     # __GLX_VENDOR_LIBRARY_NAME = "nvidia";
     # __VK_LAYER_NV_optimus = "NVIDIA_only";
   };
+
+  nixpkgs.config.allowUnfreePackages = [
+    "discord"
+    "discord-unwrapped"
+  ];
 
   environment.systemPackages = with pkgs; [
     wget

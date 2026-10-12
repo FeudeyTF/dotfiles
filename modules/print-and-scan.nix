@@ -1,4 +1,13 @@
 { pkgs, ... }: {
+
+  nixpkgs.config.allowUnfreePackages = [
+    "cups-brother-dcpt310"
+    "brscan4"
+    "brother-udev-rule-type1"
+    "brscan4-etc-files"
+	"wpscan"
+  ];
+
   services.printing = {
     enable = true;
     drivers = [ pkgs.cups-brother-dcpt310 ];

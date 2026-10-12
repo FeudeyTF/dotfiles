@@ -33,22 +33,20 @@
 
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
+    
+	useGlobalPkgs = true;
+    useUserPackages = true;
+
     users = {
       feudey = import ../home-manager/feudey.nix;
     };
   };
 
-  home-manager.useUserPackages = true;
-
   console.keyMap = "dvorak-programmer";
-
-  home-manager.useGlobalPkgs = true;
 
   programs.nix-ld.enable = true;
 
   virtualisation.docker.enable = true;
-
-  nixpkgs.config.allowUnfree = true;
 
   programs.hyprland.enable = true;
 

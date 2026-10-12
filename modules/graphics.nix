@@ -4,6 +4,12 @@
     enable32Bit = true;
   };
 
+  nixpkgs.config.allowUnfreePackages = [
+    "nvidia-x11"
+	"nvidia-settings"
+	"nvidia-kernel-modules"
+  ];
+
   services.xserver.videoDrivers = [
     "nvidia"
   ];

@@ -1,4 +1,9 @@
 { pkgs, ... }: {
+  
+  nixpkgs.config.allowUnfreePackages = [
+    "corefonts"
+  ];
+
   fonts = {
     fontDir.enable = true;
 
