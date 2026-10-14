@@ -1,4 +1,4 @@
-{ config, ... } : {
+{ config, ... }: {
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
@@ -6,8 +6,13 @@
 
   nixpkgs.config.allowUnfreePackages = [
     "nvidia-x11"
-	"nvidia-settings"
-	"nvidia-kernel-modules"
+    "nvidia-settings"
+    "nvidia-kernel-modules"
+    "cuda_cudart"
+    "cuda_nvcc"
+    "cuda_cccl"
+    "libcublas"
+    "cuda_nvrtc"
   ];
 
   services.xserver.videoDrivers = [
