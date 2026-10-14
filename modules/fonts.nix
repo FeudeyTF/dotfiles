@@ -1,5 +1,5 @@
 { pkgs, ... }: {
-  
+
   nixpkgs.config.allowUnfreePackages = [
     "corefonts"
   ];
@@ -15,6 +15,7 @@
       liberation_ttf
       noto-fonts
       noto-fonts-cjk-sans
+      nerd-fonts.iosevka
     ];
     enableDefaultPackages = true;
   };

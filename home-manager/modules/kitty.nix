@@ -1,6 +1,12 @@
 { lib, ... }: {
   programs.kitty = lib.mkForce {
     enable = true;
+
+    font = {
+      name = "monospace";
+      size = 20.0;
+    };
+
     settings = {
       confirm_os_window_close = 0;
 
