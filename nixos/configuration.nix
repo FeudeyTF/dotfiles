@@ -78,6 +78,7 @@
       ];
 
       extraListGeneral = [
+        "cache.nixos.com"
         "byond.com"
         "dm-lang.org"
         "ref.dm-lang.org"

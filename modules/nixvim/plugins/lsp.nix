@@ -1,4 +1,7 @@
-{
+{ pkgs, ... }: {
+
+  extraPackages = [ pkgs.python3 ];
+
   plugins.lsp = {
     enable = true;
 
@@ -20,6 +23,8 @@
       };
 
       ts_ls.enable = true;
+      jdtls.enable = true;
+      lemminx.enable = true;
 
       lua_ls = {
         enable = true;
