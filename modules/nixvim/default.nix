@@ -2,6 +2,8 @@
   programs.nixvim = {
     enable = true;
 
+    defaultEditor = true;
+
     imports = [
       ./opts.nix
       ./keymaps.nix

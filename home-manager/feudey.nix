@@ -8,7 +8,7 @@
     ./modules/kitty.nix
     ./modules/starship.nix
     ./modules/hyprland
-	./modules/obs.nix
+    ./modules/obs.nix
     ./modules/waybar
     ./modules/mpv.nix
     ../modules/nixvim
