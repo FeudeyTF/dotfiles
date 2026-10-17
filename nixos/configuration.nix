@@ -18,6 +18,7 @@
     ../modules/graphics.nix
     ../modules/steam.nix
     ../modules/zapret.nix
+    ../modules/docker.nix
     inputs.home-manager.nixosModules.home-manager
   ];
 
@@ -48,8 +49,6 @@
   console.keyMap = "dvorak-programmer";
 
   programs.nix-ld.enable = true;
-
-  virtualisation.docker.enable = true;
 
   programs.hyprland.enable = true;
 

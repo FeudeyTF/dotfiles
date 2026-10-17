@@ -12,6 +12,7 @@
     ./modules/waybar
     ./modules/mpv.nix
     ../modules/nixvim
+    ../modules/mc.nix
   ];
 
   home = {
@@ -22,17 +23,14 @@
 
   home.packages = with pkgs; [
     fastfetch
-    mc
     gtk3
     telegram-desktop
     onlyoffice-desktopeditors
     inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
     termshark
     corefonts
-    unzip
     bluetui
     discord
-    docker-compose
     ncmpcpp
     fsel
     simple-scan
