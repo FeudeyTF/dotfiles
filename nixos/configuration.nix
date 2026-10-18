@@ -6,6 +6,7 @@
 {
   imports = [
     ./hardware-configuration.nix
+    ./settings.nix
     ../modules/bootloader.nix
     ../modules/amnezia.nix
     ../modules/bluetooth.nix
@@ -18,22 +19,10 @@
     ../modules/graphics.nix
     ../modules/steam.nix
     ../modules/zapret.nix
+    ../modules/ollama.nix
     ../modules/docker.nix
     inputs.home-manager.nixosModules.home-manager
   ];
-
-  nix = {
-    settings = {
-      warn-dirty = false;
-      show-trace = false;
-
-      experimental-features = [
-        "nix-command"
-        "flakes"
-      ];
-    };
-    channel.enable = false;
-  };
 
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
@@ -46,18 +35,9 @@
     };
   };
 
-  console.keyMap = "dvorak-programmer";
-
   programs.nix-ld.enable = true;
 
   programs.hyprland.enable = true;
-
-  services.ollama = {
-    enable = true;
-    package = pkgs.ollama-cuda.override {
-      cudaArches = [ "61" ];
-    };
-  };
 
   my.zapret = {
     enable = true;
@@ -84,15 +64,6 @@
       ];
     };
   };
-
-  time.timeZone = "Europe/Moscow";
-
-  i18n.defaultLocale = "en_US.UTF-8";
-
-  i18n.supportedLocales = [
-    "en_US.UTF-8/UTF-8"
-    "ru_RU.UTF-8/UTF-8"
-  ];
 
   users.users.hackerman = {
     isNormalUser = true;
@@ -127,10 +98,6 @@
       "ollama"
     ];
   };
-
-  security.sudo.extraConfig = ''
-    Defaults pwfeedback
-  '';
 
   system.stateVersion = "26.05";
 }
