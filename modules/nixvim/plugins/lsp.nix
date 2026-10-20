@@ -25,6 +25,7 @@
       ts_ls.enable = true;
       jdtls.enable = true;
       lemminx.enable = true;
+      verible.enable = true;
 
       lua_ls = {
         enable = true;

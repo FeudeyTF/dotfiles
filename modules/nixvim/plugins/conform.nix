@@ -1,4 +1,10 @@
-{
+{ pkgs, ... }: {
+
+  extraPackages = with pkgs; [
+    uncrustify
+    prettier
+  ];
+
   plugins.conform-nvim = {
     enable = true;
 
@@ -10,6 +16,14 @@
 
       formatters_by_ft = {
         java = [ "uncrustify" ];
+        scss = [
+          "prettierd"
+          "prettier"
+        ];
+        css = [
+          "prettierd"
+          "prettier"
+        ];
       };
 
       formatters = {
