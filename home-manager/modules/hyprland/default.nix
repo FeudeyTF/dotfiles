@@ -799,6 +799,16 @@ in
           size = "595 405";
         }
 
+        {
+          name = "java-labs";
+
+          match = {
+            class = "^com\\.Lab.*";
+          };
+
+          float = true;
+        }
+
         # qView
         {
           name = "qview-default";
@@ -838,7 +848,7 @@ in
           size = "1275 770";
         }
 
-		 # fsel
+        # fsel
         {
           name = "fsel";
 
@@ -995,7 +1005,6 @@ in
             title = "fsel";
           };
 
-     
           ignore_alpha = 0;
         }
 
