@@ -1,6 +1,4 @@
 #!/usr/bin/env bash
-# Created by sriptis - https://github.com/scriptis
-#
 # BYOND-under-Wine launcher, sandboxed with bubblewrap.
 #
 # Mirrors the Lutris installer (lutris.net/games/install/39122):
@@ -28,12 +26,18 @@ set -euo pipefail
 SANDBOX_HOME="$BYOND_ROOT/home"                 # fake $HOME inside the jail
 
 export WINEPREFIX="$BYOND_PREFIX"
-export WINEARCH="win64"        # wow64: 32-bit BYOND + 64-bit WebView2
+export WINEARCH="win32"
 export WINEDEBUG="${WINEDEBUG:-fixme-all}"
 # Don't let wine pop up its mono/gecko installer dialogs during setup.
 export WINEDLLOVERRIDES="${WINEDLLOVERRIDES:-mscoree=d;mshtml=d}"
 
-BYOND_BIN="$WINEPREFIX/drive_c/Program Files (x86)/BYOND/bin"
+# 32-bit BYOND lands in "Program Files (x86)" on a win64 (wow64) prefix, but a
+# win32 prefix has no (x86) dir and the installer uses plain "Program Files".
+case "$WINEARCH" in
+  win32) BYOND_DIR="$WINEPREFIX/drive_c/Program Files/BYOND" ;;
+  *)     BYOND_DIR="$WINEPREFIX/drive_c/Program Files (x86)/BYOND" ;;
+esac
+BYOND_BIN="$BYOND_DIR/bin"
 SETUP_MARKER="$WINEPREFIX/.byond-flake-setup-complete"
 
 log() { printf '\033[1;36m[byond-flake]\033[0m %s\n' "$*" >&2; }
@@ -73,7 +77,7 @@ build_sandbox() {
     --dev-bind-try /dev/dri /dev/dri                           # GPU access for dxvk
     --tmpfs /tmp
     --ro-bind-try /tmp/.X11-unix /tmp/.X11-unix
-    --tmpfs /dev/shm                                           # private POSIX shm (wine/dxvk)
+	--tmpfs /dev/shm                                           # private POSIX shm (wine/dxvk)
   )
 
   # DNS: on NixOS /etc/resolv.conf is a symlink into /run (systemd-resolved),
@@ -191,15 +195,17 @@ case "$rc" in 0|199|50944) ;; *) log "Note: BYOND installer exited with $rc" ;; 
 "$WINESERVER" -w
 
 # BYOND bundles a DirectX redistributable; run it silently if present.
-dxsetup="$(find "$WINEPREFIX/drive_c/Program Files (x86)/BYOND" \
+dxsetup="$(find "$BYOND_DIR" \
   -iname 'dxsetup.exe' -print -quit 2>/dev/null || true)"
 if [ -n "$dxsetup" ]; then
   log "Running BYOND's bundled DirectX setup"
   "$WINE" "$dxsetup" /silent || true
   "$WINESERVER" -w
 fi
+
 SETUP
 
+  export BYOND_DIR
   if [ -n "${BYOND_NO_SANDBOX:-}" ]; then
     bash "$payload"
   else
@@ -263,7 +269,7 @@ pager=$!
 # Replay forwarded byond:// URLs into the SAME wineserver until the pager quits;
 # byond.exe's own single-instance logic then hands each URL to the pager.
 ( while read -r u < "$BYOND_CONTROL_FIFO"; do
-    [ -n "$u" ] && "$WINE" "$BYOND_BIN/byond.exe" "$u" >/dev/null 2>&1 &
+    [ -n "$u" ] && "$WINE" "$BYOND_BIN/byond.exe --disable-features=TSF" "$u" >/dev/null 2>&1 &
   done ) &
 reader=$!
 wait "$pager"
@@ -321,3 +327,4 @@ else
 fi
 
 run_session
+

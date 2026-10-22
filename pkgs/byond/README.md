@@ -124,7 +124,11 @@ All mutable state lives under `$BYOND_ROOT`, **outside** the Nix store.
 
 ## Maintenance
 
-- **Wine**: pinned to `wineWow64Packages.stable` (currently 11.0; Lutris requires ≥10.5).
+- **Wine**: pinned to `wineWow64Packages.staging` (currently 11.14; Lutris requires ≥10.5).
+  nixpkgs deprecated the classic-multilib `wineWowPackages` namespace in favor of
+  `wineWow64Packages`, which uses Wine's builtin WoW64 mode (a 64-bit unix side
+  running 32-bit PE binaries) — verified to run BYOND's 32-bit `byond.exe`. Any
+  wine can be pinned back via the `winePackage` override in `flake.nix`.
 - **WebView2 installer**: fetched from a Microsoft `fwlink` evergreen redirect, so
   its hash can drift. Refresh with:
 
@@ -135,3 +139,4 @@ All mutable state lives under `$BYOND_ROOT`, **outside** the Nix store.
 
   then update the hash in [`package/byond.nix`](package/byond.nix).
 - **BYOND version**: bump the URL + `version` in `package/byond.nix` and re-prefetch.
+

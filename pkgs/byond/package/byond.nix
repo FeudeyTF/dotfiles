@@ -1,12 +1,11 @@
-# Created by sriptis - https://github.com/scriptis
 {
   lib,
   stdenvNoCC,
   fetchurl,
   makeWrapper,
   icoutils, # wrestool/icotool: extract the BYOND icon from the installer PE
-  wineWowPackages,
-  winePackage ? wineWowPackages.stable, # overridable; see flake.nix (wine 10 vs 11)
+  wineWow64Packages,
+  winePackage ? wineWow64Packages.stable, # overridable; see flake.nix
   winetricks,
   bubblewrap,
   cabextract,
@@ -22,17 +21,19 @@
 
 let
   version = "516.1680";
-
-  # Multiarch wow (32-bit + 64-bit). flake.nix pins wineWowPackages.staging (latest
-  # dev + staging patchset); the wineWowPackages.stable default here is just a
-  # sensible fallback. `winePackage` is overridable so any wine can be pinned.
+  # Must run 32-bit PE binaries on x86_64 (BYOND is a 32-bit Windows app):
+  # either classic multilib or Wine's builtin WoW64 mode qualifies.
+  # wineWow64Packages is the latter (--enable-archs=x86_64,i386). flake.nix pins
+  # wineWow64Packages.staging (latest dev + staging patchset); the .stable
+  # default here is just a sensible fallback. `winePackage` is overridable so
+  # any wine can be pinned back in one line.
   wine = winePackage;
 
   # Fixed-output sources. Hashes obtained via `nix store prefetch-file`.
   byondInstaller = fetchurl {
     # Lutris pulls this over plain http; we use https + a pinned hash.
-    url = "https://www.byond.com/download/build/516/516.1680_byond.exe";
-    hash = "sha256-4EE2IMGLqQ4TV6gmcSs3+Tl508pNuTs/d+UbcMfbYkE=";
+    url = "http://www.byond.com/download/build/516/516.1685_byond.exe";
+    hash = "sha256-64QkrBHBbZ4USacOu0sfSYgE4f/DH70+B2HCGEyvMrU=";
   };
 
   # The WebView2 evergreen bootstrapper. NOTE: this fwlink redirects to
@@ -41,9 +42,9 @@ let
   #   nix store prefetch-file --name MicrosoftEdgeWebView2RuntimeInstallerX64.exe \
   #     "https://go.microsoft.com/fwlink/?linkid=2124701"
   webview2Installer = fetchurl {
-    url = "https://go.microsoft.com/fwlink/?linkid=2124701";
-    name = "MicrosoftEdgeWebView2RuntimeInstallerX64.exe";
-    hash = "sha256-mHqdizEH6E+bU7Sgd9KK5IFPw9lk1aVcVZ5zNLvyTWE=";
+    name = "MicrosoftEdgeWebView2RuntimeInstallerX86.exe";
+    url = "https://msedge.sf.dl.delivery.mp.microsoft.com/filestreamingservice/files/f9392307-9373-4315-9425-2d1577ac9f02/MicrosoftEdgeWebView2RuntimeInstallerX86.exe";
+    hash = "sha256-+G0WeriU3Dt1gtkaxXo1AXjK4K9YkiCiNlGPJnlp3nE=";
   };
 
   runtimePath = lib.makeBinPath [
