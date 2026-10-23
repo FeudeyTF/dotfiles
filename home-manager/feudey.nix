@@ -27,6 +27,7 @@
     telegram-desktop
     onlyoffice-desktopeditors
     inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
+    inputs.byond.packages.${pkgs.stdenv.hostPlatform.system}.default
     termshark
     corefonts
     bluetui
