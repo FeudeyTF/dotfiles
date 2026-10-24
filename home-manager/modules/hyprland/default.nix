@@ -975,6 +975,18 @@ in
           center = true;
           size = "760 435";
         }
+
+        # BYOND Hub
+        {
+          name = "byond-hub";
+
+          match = {
+            class = "byond.exe";
+          };
+
+          float = true;
+          center = true;
+        }
       ];
 
       layer_rule = [
