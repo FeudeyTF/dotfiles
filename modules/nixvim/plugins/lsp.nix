@@ -26,6 +26,8 @@
       jdtls.enable = true;
       lemminx.enable = true;
       verible.enable = true;
+      pyright.enable = true;
+      ruff.enable = true;
 
       lua_ls = {
         enable = true;
