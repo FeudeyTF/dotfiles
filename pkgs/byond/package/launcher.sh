@@ -269,7 +269,7 @@ pager=$!
 # Replay forwarded byond:// URLs into the SAME wineserver until the pager quits;
 # byond.exe's own single-instance logic then hands each URL to the pager.
 ( while read -r u < "$BYOND_CONTROL_FIFO"; do
-    [ -n "$u" ] && "$WINE" "$BYOND_BIN/byond.exe --disable-features=TSF" "$u" >/dev/null 2>&1 &
+    [ -n "$u" ] && "$WINE" "$BYOND_BIN/byond.exe" "$u" >/dev/null 2>&1 &
   done ) &
 reader=$!
 wait "$pager"

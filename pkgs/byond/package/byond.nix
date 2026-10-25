@@ -20,7 +20,7 @@
 }:
 
 let
-  version = "516.1680";
+  version = "516.1688";
   # Must run 32-bit PE binaries on x86_64 (BYOND is a 32-bit Windows app):
   # either classic multilib or Wine's builtin WoW64 mode qualifies.
   # wineWow64Packages is the latter (--enable-archs=x86_64,i386). flake.nix pins
@@ -32,8 +32,8 @@ let
   # Fixed-output sources. Hashes obtained via `nix store prefetch-file`.
   byondInstaller = fetchurl {
     # Lutris pulls this over plain http; we use https + a pinned hash.
-    url = "http://www.byond.com/download/build/516/516.1685_byond.exe";
-    hash = "sha256-64QkrBHBbZ4USacOu0sfSYgE4f/DH70+B2HCGEyvMrU=";
+    url = "http://www.byond.com/download/build/516/${version}_byond.exe";
+    hash = "sha256-0cjZFtaE1RY/iLbOtjEtHLohKOpk0LlMHU5ts16kbiE=";
   };
 
   # The WebView2 evergreen bootstrapper. NOTE: this fwlink redirects to
