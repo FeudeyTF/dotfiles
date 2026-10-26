@@ -1,9 +1,13 @@
 { pkgs, ... }: {
   environment.variables = {
     GSETTINGS_SCHEMA_DIR = "${pkgs.gtk3}/share/gsettings-schemas/${pkgs.gtk3.name}/glib-2.0/schemas";
+
+    # DXVK Graphics Card filter.
+    # 'NVIDIA GeForce GTX 1050' or 'AMD Radeon Vega 8 Graphics' for me
     DXVK_FILTER_DEVICE_NAME = "NVIDIA GeForce GTX 1050";
     BYOND_NO_SANDBOX = 1;
     BYOND_CACHE = "$HOME/.local/share/byond-flake/prefix/drive_c/users/feudey/Documents/BYOND/cache";
+
     # __NV_PRIME_RENDER_OFFLOAD = 1;
     # __NV_PRIME_RENDER_OFFLOAD_PROVIDER = "NVIDIA-G0";
     # __GLX_VENDOR_LIBRARY_NAME = "nvidia";
