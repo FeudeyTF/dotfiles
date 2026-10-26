@@ -26,5 +26,21 @@
       key = "<leader>kf";
       action = "<cmd>lua vim.lsp.buf.format()<CR>";
     }
+    {
+      mode = "v";
+      key = "<Tab>";
+      action = ">gv";
+      options = {
+        silent = true;
+      };
+    }
+    {
+      mode = "v";
+      key = "<S-Tab>";
+      action = "<gv";
+      options = {
+        silent = true;
+      };
+    }
   ];
 }

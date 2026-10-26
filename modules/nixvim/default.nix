@@ -12,6 +12,7 @@
       ./plugins/cmp.nix
       ./plugins/cord.nix
       ./plugins/dashboard.nix
+      ./plugins/direnv.nix
       ./plugins/conform.nix
       ./plugins/lualine.nix
       ./plugins/lsp.nix
