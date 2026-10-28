@@ -181,6 +181,11 @@ log "Setting WebView2 to Win7 compatibility mode"
   /v Version /d win7 /f
 "$WINESERVER" -w
 
+log "Setting WebView2 to use GPU accel and limit renderer proc to 4"
+"$WINE" reg add 'HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Edge\WebView2\AdditionalBrowserArguments' \
+  /v '*' /d '--ignore-gpu-blocklist --use-gl=angle --use-angle=d3d11 --disable-direct-composition --renderer-process-limit=4  --process-per-site --disable-site-isolation-trials' /f
+"$WINESERVER" -w
+
 log "Installing Microsoft Edge WebView2 runtime"
 "$WINE" "$BYOND_WEBVIEW2" /install || true
 pkill -f -i 'MicrosoftEdgeUpdate.exe' 2>/dev/null || true
