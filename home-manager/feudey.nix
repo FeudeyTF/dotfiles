@@ -36,6 +36,7 @@
     fsel
     simple-scan
     qview
+    kdePackages.plasma-workspace
   ];
 
   programs.git = {

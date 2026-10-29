@@ -520,9 +520,9 @@ in
 
         (raw ''
           function()
-            hl.exec_cmd("waybar")
             hl.exec_cmd("hypridle")
             hl.exec_cmd("hyprpaper")
+            hl.exec_cmd("xembedsniproxy")
           end
         '')
       ];
@@ -786,6 +786,18 @@ in
       ++ workspaceBinds;
 
       window_rule = [
+        {
+          name = "wine-tray-icon-box";
+
+          match = {
+            class = "xembedsniproxy";
+          };
+
+          float = true;
+          opacity = 0.0;
+          no_blur = true;
+        }
+
         {
           name = "zen-file-upload";
 
