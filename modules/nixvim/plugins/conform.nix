@@ -3,6 +3,7 @@
   extraPackages = with pkgs; [
     uncrustify
     prettier
+    biome
   ];
 
   plugins.conform-nvim = {
@@ -16,6 +17,23 @@
 
       formatters_by_ft = {
         java = [ "uncrustify" ];
+
+        javascript = [
+          "biome"
+        ];
+
+        javascriptreact = [
+          "biome"
+        ];
+
+        typescript = [
+          "biome"
+        ];
+
+        typescriptreact = [
+          "biome"
+        ];
+
         scss = [
           "prettierd"
           "prettier"
