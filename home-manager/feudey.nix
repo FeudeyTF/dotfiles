@@ -5,6 +5,7 @@
     ./modules/cursor.nix
     ./modules/direnv.nix
     ./modules/github.nix
+    ./modules/nh.nix
     ./modules/kitty.nix
     ./modules/starship.nix
     ./modules/hyprland
@@ -36,11 +37,14 @@
     fsel
     simple-scan
     qview
+
+    # TODO: NO, GOD! PLEASE, NO!
     kdePackages.plasma-workspace
   ];
 
   programs.git = {
     enable = true;
+
     settings = {
       user = {
         name = "FeudeyTF";
@@ -50,6 +54,7 @@
       init.defaultBranch = "master";
 
       pull.rebase = false;
+
       push.autoSetupRemote = true;
 
       url."git@github.com:".insteadOf = "https://github.com/";

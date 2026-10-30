@@ -3,8 +3,8 @@
     enable = true;
 
     shellAliases = {
-      rebuild = "sudo nixos-rebuild switch --flake /etc/nixos";
-      clean = "sudo nix-collect-garbage -d";
+      rebuild = "nh os switch -H Feudey";
+      clean = "nh clean all --no-direnv --no-gcroots";
     };
   };
 }
