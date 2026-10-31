@@ -35,11 +35,9 @@
         ];
 
         scss = [
-          "prettierd"
           "prettier"
         ];
         css = [
-          "prettierd"
           "prettier"
         ];
       };

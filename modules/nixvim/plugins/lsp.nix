@@ -43,4 +43,11 @@
   };
 
   plugins.lspkind.enable = true;
+
+  filetype = {
+    extension = {
+      xsl = "xsl";
+      xslt = "xslt";
+    };
+  };
 }
