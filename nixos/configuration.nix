@@ -21,6 +21,7 @@
     ../modules/zapret.nix
     ../modules/ollama.nix
     ../modules/docker.nix
+    ../modules/tg-ws-proxy.nix
     inputs.home-manager.nixosModules.home-manager
   ];
 
@@ -38,6 +39,8 @@
   programs.nix-ld.enable = true;
 
   programs.hyprland.enable = true;
+
+  my.tg-ws-proxy.enable = true;
 
   my.zapret = {
     enable = true;
