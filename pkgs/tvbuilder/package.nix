@@ -1,11 +1,14 @@
 {
-  pkgs ? import <nixpkgs> { },
+  wineWow64Packages,
+  makeDesktopItem,
+  stdenv,
+  lib,
 }:
 
 let
-  wine = pkgs.wineWow64Packages.stable;
+  wine = wineWow64Packages.stable;
 
-  desktopItem = pkgs.makeDesktopItem {
+  desktopItem = makeDesktopItem {
     name = "tvbuilder";
     exec = "tvbuilder";
     icon = "applications-other";
@@ -16,7 +19,7 @@ let
     ];
   };
 in
-pkgs.stdenv.mkDerivation {
+stdenv.mkDerivation {
   pname = "tvbuilder";
   version = "1.0";
 
@@ -54,6 +57,6 @@ pkgs.stdenv.mkDerivation {
 
   meta = {
     description = "TVBuilder emulation and training software";
-    platforms = pkgs.lib.platforms.linux;
+    platforms = lib.platforms.linux;
   };
 }
