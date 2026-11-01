@@ -12,7 +12,7 @@
     ./modules/obs.nix
     ./modules/waybar
     ./modules/mpv.nix
-    ../modules/nixvim
+    ./modules/nixvim
     ../modules/mc.nix
   ];
 
@@ -39,7 +39,7 @@
     qview
 
     # TODO: NO, GOD! PLEASE, NO!
-    kdePackages.plasma-workspace
+    # kdePackages.plasma-workspace
   ];
 
   programs.git = {
