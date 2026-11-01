@@ -7,8 +7,8 @@
   imports = [
     ./hardware-configuration.nix
     ./settings.nix
+    ./proxy.nix
     ../modules/bootloader.nix
-    ../modules/amnezia.nix
     ../modules/bluetooth.nix
     ../modules/dm.nix
     ../modules/env.nix
@@ -18,10 +18,8 @@
     ../modules/sound.nix
     ../modules/graphics.nix
     ../modules/steam.nix
-    ../modules/zapret.nix
     ../modules/ollama.nix
     ../modules/docker.nix
-    ../modules/tg-ws-proxy.nix
     inputs.home-manager.nixosModules.home-manager
   ];
 
@@ -39,34 +37,6 @@
   programs.nix-ld.enable = true;
 
   programs.hyprland.enable = true;
-
-  my.tg-ws-proxy.enable = true;
-
-  my.zapret = {
-    enable = true;
-    zapret-discord-youtube = {
-      version = "1.10.3";
-      hash = "sha256-7CI4CO85Ggg0w94t3+dreWNYdIJRMTZ72PRRMmHCudk=";
-      batFileName = "general (ALT13).bat";
-
-      extraListGoogle = [
-        "rr1---sn-hxb54vo-238s.googlevideo.com"
-        "rr6---sn-n8v7kn7y.googlevideo.com"
-        "rr18---sn-n8v7znse.googlevideo.com"
-        "rr2---sn-hxb54vo-238s.googlevideo.com"
-        "rr3---sn-axq7sn7l.googlevideo.com"
-        "rr4---sn-hxb54vo-238s.googlevideo.com"
-        "rr9---sn-axq7sn7s.googlevideo.com"
-      ];
-
-      extraListGeneral = [
-        "cache.nixos.com"
-        "byond.com"
-        "dm-lang.org"
-        "ref.dm-lang.org"
-      ];
-    };
-  };
 
   users.users.hackerman = {
     isNormalUser = true;

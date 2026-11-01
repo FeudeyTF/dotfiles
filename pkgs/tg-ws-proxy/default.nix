@@ -7,14 +7,16 @@
 python3Packages.buildPythonApplication (finalAttrs: {
   pname = "tg-ws-proxy";
   version = "1.11.3";
-  pyproject = true;
+  hash = "sha256-ib8Ka5W3l0n4YTLREg/zZNjv2gK4aKYYZRFisTBOEZY=";
 
   src = fetchFromGitHub {
     owner = "Flowseal";
     repo = "tg-ws-proxy";
     tag = "v${finalAttrs.version}";
-    hash = "sha256-ib8Ka5W3l0n4YTLREg/zZNjv2gK4aKYYZRFisTBOEZY=";
+    hash = finalAttrs.hash;
   };
+
+  pyproject = true;
 
   build-system = [ python3Packages.hatchling ];
 

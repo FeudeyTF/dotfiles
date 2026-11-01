@@ -7,7 +7,7 @@
   ...
 }:
 let
-  cfg = config.my.tg-ws-proxy;
+  cfg = config.proxy.tg-ws-proxy;
 
   args = [
     "--host"
@@ -56,12 +56,12 @@ let
   '';
 in
 {
-  options.my.tg-ws-proxy = {
+  options.proxy.tg-ws-proxy = {
     enable = lib.mkEnableOption "tg-ws-proxy (local MTProto proxy for Telegram over WebSocket)";
 
     package = lib.mkOption {
       type = lib.types.package;
-      default = pkgs.callPackage ../pkgs/tg-ws-proxy { };
+      default = pkgs.callPackage ../../../pkgs/tg-ws-proxy { };
       defaultText = lib.literalExpression "pkgs.callPackage ../pkgs/tg-ws-proxy { }";
       description = "tg-ws-proxy package.";
     };
