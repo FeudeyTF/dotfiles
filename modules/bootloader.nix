@@ -4,9 +4,15 @@
     grub = {
       enable = true;
       efiSupport = true;
+      splashImage = null;
+      backgroundColor = null;
       devices = [ "nodev" ];
 
-      theme = pkgs.catppuccin-grub;
+      theme = (
+        pkgs.sleek-grub-theme.override {
+          withStyle = "dark";
+        }
+      );
     };
   };
 

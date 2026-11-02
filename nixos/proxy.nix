@@ -4,6 +4,7 @@
     ../modules/proxy/amnezia
     ../modules/proxy/zapret-discord-youtube
     ../modules/proxy/tg-ws-proxy
+    ../modules/proxy/warp
   ];
 
   proxy = {
