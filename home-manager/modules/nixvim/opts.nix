@@ -8,6 +8,7 @@
     wrap = true;
     signcolumn = "yes";
     winborder = "rounded";
+    mouse = "";
     completeopt = [ "noselect" ];
   };
 }

@@ -18,7 +18,6 @@
     ../modules/sound.nix
     ../modules/graphics.nix
     ../modules/steam.nix
-    ../modules/ollama.nix
     ../modules/docker.nix
     inputs.home-manager.nixosModules.home-manager
   ];
@@ -33,6 +32,10 @@
       feudey = import ../home-manager/feudey.nix;
     };
   };
+
+  nixpkgs.config.problems.handlers."gtk+".broken = "warn";
+
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   programs.nix-ld.enable = true;
 

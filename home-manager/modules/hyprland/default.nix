@@ -254,7 +254,7 @@ in
           shadow = {
             enabled = true;
             range = 15;
-            render_power = 5;
+            render_power = 4;
             color = "rgba(00000080)";
           };
 
