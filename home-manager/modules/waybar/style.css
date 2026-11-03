@@ -4,6 +4,7 @@
 @import "tokens/widget.css";
 @import "tokens/batt-clock.css";
 @import "tokens/slider.css";
+@import "tokens/menu.css";
 
 * {
   margin: 0;

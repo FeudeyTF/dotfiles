@@ -438,27 +438,7 @@
       };
     };
 
-    style = ''
-      @import "tokens/colors.css";
-      @import "tokens/state.css";
-      @import "tokens/workspace.css";
-      @import "tokens/widget.css";
-      @import "tokens/batt-clock.css";
-      @import "tokens/slider.css";
-
-      * {
-        margin: 0;
-        padding: 0;
-        min-height: 0px;
-        border: none;
-        border-radius: 0;
-        font-family: "JetBrainsMono Nerd Font";
-      }
-
-      window#waybar {
-        background: transparent;
-      }
-    '';
+    style = builtins.readFile ./style.css;
   };
 
   xdg.configFile."waybar/tokens".source = ./tokens;

@@ -1,0 +1,55 @@
+@import "colors.css";
+
+tooltip {
+  margin: 6px;
+  padding: 8px 12px;
+  border: 1px solid @outline_variant;
+  border-radius: 12px;
+  background-color: @surface_container_high;
+  color: @on_surface;
+}
+
+tooltip label {
+  color: @on_surface;
+}
+
+menu {
+  margin: 4px;
+  padding: 6px;
+  border: 1px solid @outline_variant;
+  border-radius: 14px;
+  background-color: @surface_container;
+  color: @on_surface;
+}
+
+menuitem {
+  min-height: 20px;
+  padding: 7px 10px;
+  border-radius: 9px;
+  color: @on_surface;
+}
+
+menuitem:hover,
+menuitem:focus {
+  background-color: @primary;
+  color: @on_primary;
+}
+
+menuitem:disabled {
+  color: @outline;
+}
+
+menuitem arrow {
+  color: @on_surface_variant;
+}
+
+menuitem:hover arrow,
+menuitem:focus arrow {
+  color: @on_primary;
+}
+
+menu separator {
+  min-height: 1px;
+  margin: 6px 4px;
+  background-color: @outline_variant;
+}
