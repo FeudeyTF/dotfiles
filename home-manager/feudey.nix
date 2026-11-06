@@ -1,4 +1,8 @@
-{ pkgs, inputs, ... }: {
+{ pkgs, inputs, ... }:
+let
+  tvbuilder = pkgs.callPackage ../pkgs/tvbuilder { };
+in
+{
   imports = [
     inputs.nixvim.homeModules.nixvim
     ./bash.nix
@@ -37,6 +41,7 @@
     fsel
     simple-scan
     qview
+    tvbuilder
 
     # TODO: NO, GOD! PLEASE, NO!
     # kdePackages.plasma-workspace
