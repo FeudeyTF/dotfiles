@@ -1,3 +1,4 @@
+# Created by scriptis - https://github.com/scriptis
 {
   description = "BYOND (Windows client) packaged under Wine, mirroring the Lutris installer (lutris.net/games/install/39122)";
 

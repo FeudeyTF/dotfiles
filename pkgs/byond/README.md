@@ -1,11 +1,12 @@
 # byond-flake
 
-A Nix flake that packages the **BYOND v516.1680 Windows client** to run under
+Author: [scriptis](https://github.com/scriptis)
+
+A Nix flake that packages the **BYOND v516.1688 Windows client** to run under
 Wine on Linux. It's a Nix port of the Lutris installer recipe
 [39122](https://lutris.net/games/install/39122/view).
 
-BYOND's full client (the pager / DreamSeeker) is Windows-only, so — like Lutris —
-this runs it through Wine. (BYOND's *native* Linux build only ships the
+BYOND's full client (the pager / DreamSeeker) is Windows-only, so this runs it through Wine. (BYOND's *native* Linux build only ships the
 server-side tools: DreamDaemon, DreamMaker, etc.)
 
 ## Usage
@@ -28,13 +29,13 @@ display). Subsequent launches go straight to BYOND.
 The package ships a desktop entry (`share/applications/byond.desktop`) and the
 BYOND icon (extracted from the installer's PE resources into the hicolor theme),
 and registers itself as the handler for the **`byond://`** URL scheme
-(`x-scheme-handler/byond`) — so clicking a "Play Now" hub link or any
+(`x-scheme-handler/byond`) - so clicking a "Play Now" hub link or any
 `byond://host:port` link launches the client and joins the game. Just install the
 package into a profile that XDG scans (e.g. `environment.systemPackages`,
 `home.packages`, or `nix profile install`); the entry + MIME handler register
 automatically.
 
-BYOND's pager is **single-instance** — a second `byond.exe` normally hands its URL
+BYOND's pager is **single-instance** - a second `byond.exe` normally hands its URL
 to the already-running pager via wineserver IPC, which only works inside one jail.
 The launcher preserves this: exactly one jail owns the session (guarded by an
 `flock`), and other invocations forward their `byond://` URL into it through a
@@ -56,20 +57,20 @@ jail with a minimal mount set:
 | `$BYOND_ROOT`                           | rw   | **the only writable host path**      |
 | `/tmp`, `/dev/shm`                      | priv | fresh tmpfs per run                  |
 
-Your real `$HOME` — including `~/Documents` — is **never mounted**. Wine
+Your real `$HOME` - including `~/Documents` - is **never mounted**. Wine
 normally forwards `%USERPROFILE%\Documents` (where BYOND writes `Documents/BYOND`)
 to the real `~/Documents`; the launcher neutralizes that symlink and binds
 `$BYOND_DOCUMENTS` (under `$BYOND_ROOT`) in its place.
 
 The jail runs in a private PID namespace with `--die-with-parent`, so nothing
 outlives the session: when `byond.exe` exits, the kernel reaps the whole
-namespace — including any lingering `wineserver`/WebView2 processes (no zombies).
+namespace - including any lingering `wineserver`/WebView2 processes (no zombies).
 The host network namespace is shared (BYOND needs to reach its hub/servers).
 
 **The entire setup runs in a single, persistent jail.** This matters:
 `wineboot --init` registers COM DLLs (e.g. MSXML) asynchronously in helper
 processes, and the `--die-with-parent` + PID namespace would kill those helpers
-the instant each step's jail exited — leaving a half-initialized prefix. With
+the instant each step's jail exited - leaving a half-initialized prefix. With
 MSXML unregistered, the VC++ redist bootstrapper aborts with `CO_E_CLASSSTRING`
 (exit 243). One jail (one `wineserver`, with `wineserver -w` after `wineboot`)
 lets that async init finish, so the whole setup succeeds inside the sandbox.
@@ -80,14 +81,14 @@ Set `BYOND_NO_SANDBOX=1` to bypass the jail (debugging only).
 
 BYOND derives its HWID from the home drive's volume serial number. A bare Wine
 prefix has no serial set, so Wine returns one derived from the drive letter
-(`C` → `4300-0000`) — **identical on every Wine BYOND install**, which makes
+(`C` → `4300-0000`) - **identical on every Wine BYOND install**, which makes
 per-HWID identification/bans useless for server hosts. Setup writes a random
 `drive_c/.windows-serial` once, giving each install a unique, stable HWID
 (`--reset` rerolls it; `--setup` preserves it).
 
 ### What the first run does (mirrors the Lutris recipe)
 
-1. Creates a `win64` Wine prefix (wow64 — 32-bit BYOND + 64-bit WebView2).
+1. Creates a `win64` Wine prefix (wow64 - 32-bit BYOND + 64-bit WebView2).
 2. Installs winetricks verbs: `vcrun2022 dxtrans corefonts dxvk`.
 3. Sets `msedgewebview2.exe` to Win7 compat mode.
 4. Installs the Microsoft Edge WebView2 runtime.
@@ -105,7 +106,7 @@ byond --prefix    # print the Wine prefix path
 byond --reset     # delete the Wine prefix
 ```
 
-A plain `byond` invocation **kills any running jail and starts over** — BYOND leaks
+A plain `byond` invocation **kills any running jail and starts over** - BYOND leaks
 processes heavily, so a clean slate is the sane default for a re-launch (and
 `--kill` exposes that explicitly). A `byond://` URL is the exception: it forwards
 into the running session (single-instance) rather than restarting it.
@@ -127,7 +128,7 @@ All mutable state lives under `$BYOND_ROOT`, **outside** the Nix store.
 - **Wine**: pinned to `wineWow64Packages.staging` (currently 11.14; Lutris requires ≥10.5).
   nixpkgs deprecated the classic-multilib `wineWowPackages` namespace in favor of
   `wineWow64Packages`, which uses Wine's builtin WoW64 mode (a 64-bit unix side
-  running 32-bit PE binaries) — verified to run BYOND's 32-bit `byond.exe`. Any
+  running 32-bit PE binaries) - verified to run BYOND's 32-bit `byond.exe`. Any
   wine can be pinned back via the `winePackage` override in `flake.nix`.
 - **WebView2 installer**: fetched from a Microsoft `fwlink` evergreen redirect, so
   its hash can drift. Refresh with:

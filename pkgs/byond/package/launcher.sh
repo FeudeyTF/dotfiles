@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# Created by scriptis - https://github.com/scriptis
 # BYOND-under-Wine launcher, sandboxed with bubblewrap.
 #
 # Mirrors the Lutris installer (lutris.net/games/install/39122):

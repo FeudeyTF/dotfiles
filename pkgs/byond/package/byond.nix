@@ -1,3 +1,4 @@
+# Created by scriptis - https://github.com/scriptis
 {
   lib,
   stdenvNoCC,
