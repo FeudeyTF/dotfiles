@@ -17,26 +17,6 @@
       },
       "parent": []
     },
-    "byond-sdk": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1787440025,
-        "narHash": "sha256-op24Ks4vONtXAitKZsIlPVRigCAHwDjDVCnkLUbqhS0=",
-        "owner": "FeudeyTF",
-        "repo": "byond-sdk-flake",
-        "rev": "4b26eea939101763a32313c6b7828e73ddcf8f68",
-        "type": "github"
-      },
-      "original": {
-        "owner": "FeudeyTF",
-        "repo": "byond-sdk-flake",
-        "type": "github"
-      }
-    },
     "flake-parts": {
       "inputs": {
         "nixpkgs-lib": [
@@ -174,7 +154,6 @@
     "root": {
       "inputs": {
         "byond": "byond",
-        "byond-sdk": "byond-sdk",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
         "nixvim": "nixvim",

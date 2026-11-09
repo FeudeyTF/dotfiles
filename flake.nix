@@ -9,11 +9,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    byond-sdk = {
-      url = "github:FeudeyTF/byond-sdk-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     byond = {
       url = "path:./pkgs/byond";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -36,7 +31,6 @@
       nixpkgs,
       home-manager,
       zen-browser,
-      byond-sdk,
       byond,
       nixvim,
       ...
