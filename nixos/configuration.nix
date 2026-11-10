@@ -37,8 +37,6 @@
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
-  programs.nix-ld.enable = true;
-
   programs.hyprland.enable = true;
 
   users.users.hackerman = {

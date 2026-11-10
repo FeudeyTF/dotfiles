@@ -18,9 +18,9 @@
       formatters_by_ft = {
         java = [ "uncrustify" ];
 
-        javascript = [
-          "biome"
-        ];
+        # javascript = [
+        #   "biome"
+        # ];
 
         javascriptreact = [
           "biome"
