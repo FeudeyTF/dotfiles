@@ -1,5 +1,6 @@
 # Created by scriptis - https://github.com/scriptis
 {
+  pkgs,
   lib,
   stdenvNoCC,
   fetchurl,
@@ -48,6 +49,8 @@ let
     hash = "sha256-+G0WeriU3Dt1gtkaxXo1AXjK4K9YkiCiNlGPJnlp3nE=";
   };
 
+  launcher = (import ./launcher.nix { inherit pkgs; });
+
   runtimePath = lib.makeBinPath [
     wine
     winetricks
@@ -84,7 +87,7 @@ stdenvNoCC.mkDerivation {
     install -Dm644 ${byondInstaller}    $out/share/byond/byond-installer.exe
     install -Dm644 ${webview2Installer} $out/share/byond/webview2-installer.exe
 
-    install -Dm755 ${./launcher.sh} $out/libexec/byond-launcher
+    install -Dm755 ${launcher} $out/libexec/byond-launcher
 
     makeWrapper $out/libexec/byond-launcher $out/bin/byond \
       --prefix PATH : "${runtimePath}" \
