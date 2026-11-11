@@ -8,6 +8,7 @@
     ./hardware-configuration.nix
     ./settings.nix
     ./proxy.nix
+    ../modules/android.nix
     ../modules/bootloader.nix
     ../modules/bluetooth.nix
     ../modules/dm.nix
