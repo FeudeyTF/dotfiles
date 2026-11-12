@@ -1,6 +1,8 @@
 { pkgs, inputs, ... }:
 let
   tvbuilder = pkgs.callPackage ../pkgs/tvbuilder { };
+
+  quartus = pkgs.callPackage ../pkgs/quartus/package.nix { };
 in
 {
   imports = [
@@ -42,6 +44,7 @@ in
     simple-scan
     qview
     tvbuilder
+    quartus
 
     # TODO: NO, GOD! PLEASE, NO!
     # kdePackages.plasma-workspace
