@@ -13,12 +13,20 @@
 }:
 
 let
-  desktopItem = makeDesktopItem {
+  quartusDesktopItem = makeDesktopItem {
     name = "quartus-prime-lite";
     exec = "quartus";
     icon = "quartus";
     desktopName = "Quartus";
     genericName = "Quartus Prime";
+    categories = [ "Development" ];
+  };
+
+  modelSimDesktopItem = makeDesktopItem {
+    name = "modelsim";
+    exec = "vsim";
+    desktopName = "ModelSim";
+    genericName = "Model-Sim";
     categories = [ "Development" ];
   };
   # I think modelsim_ase/linux/vlm checksums itself, so use FHSUserEnv instead of `patchelf`
@@ -35,13 +43,13 @@ buildFHSEnv rec {
       '')
       # quartus requirements
       glib
-      xorg.libICE
-      xorg.libSM
+      libice
+      libsm
       zlib
       libudev0-shim
       # qsys requirements
-      xorg.libXtst
-      xorg.libXi
+      libxtst
+      libxi
     ];
 
   # Also support 32-bit executables.
@@ -64,28 +72,29 @@ buildFHSEnv rec {
 
       freetype = pkgs.freetype.override { libpng = libpng12; };
       fontconfig = pkgs.fontconfig.override { inherit freetype; };
-      libXft = pkgs.libxft.override { inherit freetype fontconfig; };
+      libxft = pkgs.libxft.override { inherit freetype fontconfig; };
     in
     with pkgs;
     [
       # modelsim requirements
       libxml2
       ncurses5
-      unixODBC
-      libXft
+      unixodbc
+      libxft
       # common requirements
       freetype
       fontconfig
       libpng12
-      xorg.libX11
-      xorg.libXext
-      xorg.libXrender
+      libx11
+      libxext
+      libxrender
       libxcrypt-legacy
     ];
 
   extraInstallCommands = ''
     mkdir -p $out/share/applications $out/share/icons/128x128
-    ln -s ${desktopItem}/share/applications/* $out/share/applications
+    ln -s ${quartusDesktopItem}/share/applications/* $out/share/applications
+    ln -s ${modelSimDesktopItem}/share/applications/* $out/share/applications
     ln -s ${unwrapped}/licenses/images/dc_quartus_panel_logo.png $out/share/icons/128x128/quartus.png
 
     progs_to_wrap=(
