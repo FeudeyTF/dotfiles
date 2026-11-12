@@ -1,4 +1,5 @@
 {
+  pkgsi686Linux,
   buildFHSEnv,
   callPackage,
   makeDesktopItem,
@@ -63,7 +64,7 @@ buildFHSEnv rec {
 
       freetype = pkgs.freetype.override { libpng = libpng12; };
       fontconfig = pkgs.fontconfig.override { inherit freetype; };
-      #libxft = pkgs.libxft.override { inherit freetype fontconfig; };
+      libXft = pkgs.libxft.override { inherit freetype fontconfig; };
     in
     with pkgs;
     [
@@ -128,6 +129,10 @@ buildFHSEnv rec {
     # for non-ModelSim wrappers.
     if [ "$NIXPKGS_IS_MODELSIM_WRAPPER" != 1 ]; then
         export LD_PRELOAD=''${LD_PRELOAD:+$LD_PRELOAD:}/usr/lib/libudev.so.0
+    fi
+
+    if [ "$NIXPKGS_IS_MODELSIM_WRAPPER" = 1 ]; then
+       export LD_LIBRARY_PATH="${pkgsi686Linux.ncurses5}/lib''${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
     fi
   '';
 
