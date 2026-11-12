@@ -20,6 +20,7 @@
     ../modules/graphics.nix
     ../modules/steam.nix
     ../modules/docker.nix
+    ../modules/quartus.nix
     inputs.home-manager.nixosModules.home-manager
   ];
 
