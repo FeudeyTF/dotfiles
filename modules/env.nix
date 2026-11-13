@@ -13,6 +13,8 @@
     # __GLX_VENDOR_LIBRARY_NAME = "nvidia";
     # __VK_LAYER_NV_optimus = "NVIDIA_only";
 
+    MODELSIM_TCL = "$HOME/.cache/.modelsim";
+
     # Cache
     XDG_CACHE_HOME = "$HOME/.cache";
     PIP_CACHE_DIR = "$HOME/.cache/pip";
