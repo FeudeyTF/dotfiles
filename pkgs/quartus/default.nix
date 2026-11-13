@@ -115,6 +115,7 @@ buildFHSEnv rec {
         case "$relname" in
             modelsim_ase/*)
                 echo "export NIXPKGS_IS_MODELSIM_WRAPPER=1" >> "$wrapped"
+                echo "unset LD_PRELOAD" >> "$wrapped"
                 ;;
         esac
         echo "$wrapper $prog \"\$@\"" >> "$wrapped"

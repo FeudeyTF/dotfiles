@@ -2,7 +2,7 @@
 let
   tvbuilder = pkgs.callPackage ../pkgs/tvbuilder { };
 
-  quartus = pkgs.callPackage ../pkgs/quartus/package.nix { };
+  quartus = pkgs.callPackage ../pkgs/quartus { };
 in
 {
   imports = [
@@ -43,6 +43,7 @@ in
     fsel
     simple-scan
     qview
+    wmname
     tvbuilder
     quartus
 

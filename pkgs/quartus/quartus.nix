@@ -98,21 +98,18 @@ stdenv.mkDerivation rec {
       ++ (lib.attrValues unsupportedDeviceIds);
     in
     ''
-      echo "setting up installer"                                                                               
+      echo "setting up installer..."
       ${lib.concatMapStringsSep "\n" copyInstaller installers}
       ${lib.concatMapStringsSep "\n" copyComponent components}
 
-      echo "executing installer"                                                                               
+      echo "executing installer..."
       unstick $TEMP/${(builtins.head installers).name} \
         --disable-components ${lib.concatStringsSep "," disabledComponents} \
         --mode unattended --installdir $out --accept_eula 1
 
-      echo "copiyng ncurses5 ${pkgsi686Linux.ncurses5}"
-      cp -r ${pkgsi686Linux.ncurses5}/lib/* $out/modelsim_ase/linux
-
       # This patch is from https://wiki.archlinux.org/index.php/Altera_Design_Software                        
-      echo "patching vco"                                                                                    
-      patch --force --strip 0 --directory $out < ${./vsim.patch}                                                       
+      echo "patching vco..."                                                                                    
+      patch --force --strip 0 --directory $out < ${./vco.patch}                                                       
       echo "cleaning up..."
       rm -r $out/uninstall $out/logs
     '';
