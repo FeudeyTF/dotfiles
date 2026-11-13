@@ -519,11 +519,12 @@ in
         "hyprland.start"
 
         (raw ''
-          function()
-            hl.exec_cmd("hypridle")
-            hl.exec_cmd("hyprpaper")
-            hl.exec_cmd("xembedsniproxy")
-          end
+          	function()
+          		hl.exec_cmd("hypridle")
+          		hl.exec_cmd("wmname LG3D")
+          		hl.exec_cmd("hyprpaper")
+          		hl.exec_cmd("xembedsniproxy")
+          	end
         '')
       ];
 
