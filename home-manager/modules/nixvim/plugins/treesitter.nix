@@ -4,13 +4,13 @@ let
 
   tree-sitter-dm = pkgs.tree-sitter.buildGrammar {
     language = "dm";
-    version = "0.26.rev1";
+    version = "0.26.1";
 
     src = pkgs.fetchFromGitHub {
       owner = "FeudeyTF";
       repo = "tree-sitter-dm";
-      rev = "270b6d8b6c938b61b301ac78205dd8724f3ffea6";
-      hash = "sha256-I7Boj+lht5ZnfOCBZ2NARpFmnl1pKLpSCT/I7YHr3+s=";
+      rev = "4f7e44cff1045a200f1f38734c866112ffa99134";
+      hash = "sha256-p04CrLMg3SHRir+lpeeBZ/zRfOcuvZnvEinhJ5enQ9w=";
     };
   };
 
