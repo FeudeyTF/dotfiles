@@ -20,6 +20,7 @@
   fontconfig,
   freetype,
   stdenv,
+  autoPatchelfHook,
 }:
 
 let
@@ -66,9 +67,12 @@ stdenv.mkDerivation {
   };
 
   nativeBuildInputs = [
+    autoPatchelfHook
     godot_4_4
     makeWrapper
   ];
+
+  buildInputs = runtimeLibs ++ [ stdenv.cc.cc.lib ];
 
   dontConfigure = true;
 
