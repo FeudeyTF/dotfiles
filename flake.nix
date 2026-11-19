@@ -14,6 +14,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    votv = {
+      url = "github:FeudeyTF/votv-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake";
       inputs = {
@@ -32,6 +37,7 @@
       home-manager,
       zen-browser,
       byond,
+      votv,
       nixvim,
       ...
     }@inputs:

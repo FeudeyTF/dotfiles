@@ -7,6 +7,7 @@ in
 {
   imports = [
     inputs.nixvim.homeModules.nixvim
+    inputs.votv.homeModules.votv
     ./bash.nix
     ./modules/cursor.nix
     ./modules/direnv.nix
@@ -50,6 +51,16 @@ in
     # TODO: NO, GOD! PLEASE, NO!
     # kdePackages.plasma-workspace
   ];
+
+  programs.votv = {
+    enable = true;
+    extraVariables = {
+      __GLX_VENDOR_LIBRARY_NAME = "nvidia";
+      VK_ICD_FILENAMES = "/run/opengl-driver/share/vulkan/icd.d/nvidia_icd.json";
+      __NV_PRIME_RENDER_OFFLOAD = "1";
+      __VK_LAYER_NV_optimus = "NVIDIA_only";
+    };
+  };
 
   programs.git = {
     enable = true;

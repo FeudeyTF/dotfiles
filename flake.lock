@@ -157,6 +157,7 @@
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
         "nixvim": "nixvim",
+        "votv": "votv",
         "zen-browser": "zen-browser"
       }
     },
@@ -189,6 +190,26 @@
         "owner": "nix-systems",
         "ref": "future-26.11",
         "repo": "default",
+        "type": "github"
+      }
+    },
+    "votv": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1795083856,
+        "narHash": "sha256-hJVQnVIFNuuefxLzgumPT4exy2Ax0Ja32hnBSdUQYN0=",
+        "owner": "FeudeyTF",
+        "repo": "votv-flake",
+        "rev": "8458a4d7003fbea3d76f0eba012bb5e0136cafaa",
+        "type": "github"
+      },
+      "original": {
+        "owner": "FeudeyTF",
+        "repo": "votv-flake",
         "type": "github"
       }
     },
