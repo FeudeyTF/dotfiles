@@ -2,8 +2,6 @@
 
   extraPackages = with pkgs; [
     uncrustify
-    prettier
-    biome
   ];
 
   plugins.conform-nvim = {

@@ -15,7 +15,7 @@
     };
 
     votv = {
-      url = "github:FeudeyTF/votv-flake";
+      url = "path:/home/feudey/Projects/votv-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

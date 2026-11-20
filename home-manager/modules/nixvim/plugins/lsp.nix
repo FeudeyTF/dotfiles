@@ -1,6 +1,4 @@
-{ pkgs, ... }: {
-
-  extraPackages = [ pkgs.python3 ];
+{
 
   plugins.lsp = {
     enable = true;
@@ -46,20 +44,15 @@
       };
 
       ts_ls.enable = true;
-      jdtls.enable = true;
-      lemminx.enable = true;
       verible.enable = true;
-      pyright.enable = true;
-      ruff.enable = true;
-      csharp_ls.enable = true;
 
       lua_ls = {
-        enable = true;
+        enable = false;
         settings.telemetry.enable = false;
       };
 
       rust_analyzer = {
-        enable = true;
+        enable = false;
         installCargo = true;
         installRustc = true;
       };
