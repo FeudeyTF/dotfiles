@@ -36,6 +36,7 @@ in
     onlyoffice-desktopeditors
     inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
     inputs.byond.packages.${pkgs.stdenv.hostPlatform.system}.default
+    #inputs.votv.packages.${pkgs.stdenv.hostPlatform.system}.default
     termshark
     corefonts
     bluetui
@@ -61,6 +62,7 @@ in
       __VK_LAYER_NV_optimus = "NVIDIA_only";
     };
     saveGamesPath = "/home/feudey/VotV/Saves";
+    assetsPath = "/home/feudey/VotV/Assets";
   };
 
   programs.git = {
