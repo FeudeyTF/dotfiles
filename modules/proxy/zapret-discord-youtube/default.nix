@@ -32,7 +32,7 @@ in
   config = lib.mkIf cfg.enable {
     services.zapret =
       let
-        batFile = builtins.readFile "${cfg.package.src}/${cfg.batFileName}";
+        batFile = builtins.readFile "${cfg.package}/bat/${cfg.batFileName}";
 
         batFileLines = builtins.filter (
           l: builtins.isString l && l != "" && builtins.match "^#.*" l == null

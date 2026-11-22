@@ -200,8 +200,8 @@
         ]
       },
       "locked": {
-        "lastModified": 1795294266,
-        "narHash": "sha256-UHtkTmZWdHA3xft3YjZ8zO+K1mLDb3/s90bfeqIZIPo=",
+        "lastModified": 1795298484,
+        "narHash": "sha256-5qqcSisLxk2OPSyLppdPaS+n+8PPApwkSWvSAB3tcog=",
         "path": "/home/feudey/Projects/votv-flake",
         "type": "path"
       },

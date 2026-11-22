@@ -39,11 +39,10 @@ stdenvNoCC.mkDerivation (finalAttrs: {
 
     mkdir -p $out/lists
     cp -r lists-with-extra/*.txt $out/lists
-  '';
 
-  passthru = {
-    src = finalAttrs.src;
-  };
+    mkdir -p $out/bat
+    cp ./*.bat $out/bat
+  '';
 
   meta = {
     description = "Toolkit for bypassing DPI restrictions and restoring access to Discord and YouTube";
